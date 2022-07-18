@@ -16,7 +16,7 @@ def contagem_letras ():
     lista_acumula={}
 
     for palavra in lista_palavras:
-        lista_letras = list =(palavra)
+        lista_letras = list(palavra)
         for letra in lista_letras:
             if letra not in lista_acumula:
                 lista_acumula [letra] =1
@@ -35,22 +35,30 @@ def contagem_primeira ():
             lista_acumula[palavra[0]]+=1
     return lista_acumula
 
+#Criação de Arquivo com as Três primeiras letras do meu nome
 def cont_tres_nome(lista_palavras, inicia_nome):
 
-    with open("Die.txt", "a") as escrita:
+    with open("Die.txt", "a") as f:
         for palavra in lista_palavras:
             if palavra[:3] == inicia_nome:
-                escrita.write(palavra)
+                f.write(palavra)
 
-def cont_tres_nome(lista_palavras, inicia_nome):
+#Encontrar palavras que tenham a letra do meu nome
+def palavras_nome(lista_palavras, nome):
 
-    with open("Die.txt", "a") as escrita:
+    with open("Diego.txt", "a") as f:
         for palavra in lista_palavras:
-            if palavra[:3] == inicia_nome:
-                escrita.write(palavra)
+            if nome in palavra:
+                f.write(palavra)
 
- 
+ # Encontrar os palindromos
+def palindromos(lista_palavras =[]):
+    with open("palindromos.txt", "a") as f:
+        for palavra in lista_palavras:
+            if palavra == palavra[::-1]:
+                    f.write(palavra)
+              
 
-letrinhas =cont_tres_nome(lista_palavras, inicia_nome ="DIE") 
 
-
+palavri =quantidade_palavras(lista_palavras)
+print (quantidade_palavras)
