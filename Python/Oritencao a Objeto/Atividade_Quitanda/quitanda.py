@@ -11,16 +11,21 @@ class Quitanda:
             "2": 8,
             "3": 15
         }
-    
-    def pergunta_fruta(self):
+
+
+    def menu(self):
         print("Olá Cliente!!!\n Essas são as nossas frutas fresquinhas:")
         for cod in self.frutas:
             fruta = self.frutas[cod]
-            print (f"{cod} - {fruta}")
+            preco = self.precos[cod]
+            print (f"{cod} - {fruta} - (R$ {preco},00)")
 
-        user_cod = input("Informe o numero da fruta que deseja:")
+
+    def pergunta_fruta(self):
+        user_cod = input("Informe o numero da fruta que deseja: (Ou digite 0 para finalizar a compra)")
         user_fruta = self.frutas[user_cod]
         print(f"Você escolheu {user_fruta}")
+        return user_cod
     
     def quantidade (self):
         user_qtd = input(f"Quantas você deseja ?\n")
@@ -35,7 +40,20 @@ class Quitanda:
         cod = self.pergunta_fruta()
         qtd = self.quantidade()
         preco_total = self.calculadora (cod, qtd)
-        print(f"Deu R$ {preco_total,},00")
+        print(f"Deu R$ {preco_total},00")
+        
+    def carinho (self):
+        self.menu()
+        cod = self.pergunta_fruta()
+        preco_total = 0
+        while cod !="S":
+            qtd = self.quantidade()
+            preco = self.calculadora(cod,qtd)
+            preco_total = preco_total + preco
+            print(f"Total da sua compra até o momento é de {preco_total},00")
+            self.menu()
+            cod = self.pergunta_fruta()
+
 
 teste = Quitanda()
-teste.pedido()
+teste.carinho()
